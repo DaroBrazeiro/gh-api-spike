@@ -11,7 +11,6 @@ const __dirname = path.dirname(__filename);
 
 // Configuración
 
-// const SOURCE_ORG_NAME = "ueno-tecnologia-org";
 const SOURCE_REPO_OWNER = "DaroBrazeiro";
 const SOURCE_REPO_NAME = "test-empty-template";
 const DEST_REPO_OWNER = "DaroBrazeiro";
@@ -22,7 +21,6 @@ const COMMIT_MESSAGE = "Copiar código desde el repositorio de origen";
 const PR_TITLE = "Copiar código a nuevo repositorio";
 const PR_BODY = "Este PR copia el código desde el repositorio de origen.";
 
-// Inicializar Octokit
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
@@ -62,8 +60,8 @@ async function createRepoAndPR() {
       console.error('Error: Token de autenticación inválido o permisos insuficientes.');
     } else {
       console.error('Error al crear el repositorio o el Pull Request:', error);
-      // fs.rm("./temp-repo", { recursive: true });
     }
+    fs.rm("./temp-repo", { recursive: true });
   }
 }
 
